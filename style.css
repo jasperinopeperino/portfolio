@@ -1,0 +1,377 @@
+/* ============================================================
+   JASPER NAUS — PORTFOLIO 2026
+   style.css
+   ============================================================ */
+
+
+/* ----------------------------------------
+   FONT
+   ---------------------------------------- */
+@font-face {
+  font-family: 'MoriGothic';
+  src: url('Work/MoriGothic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ----------------------------------------
+   CSS VARIABLES
+   ---------------------------------------- */
+:root {
+  --font-main: 'MoriGothic', sans-serif;
+
+  --color-bg:     #000;
+  --color-white:  #fff;
+  --color-accent: greenyellow;
+
+  --font-size-body:  15px;
+  --font-size-large: 33px;
+  --line-height:     1.3;
+
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  --overlay-transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ----------------------------------------
+   RESET & BASE
+   ---------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--color-bg);
+  overflow: hidden;
+  overscroll-behavior: none;
+  font-family: var(--font-main);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height);
+  color: var(--color-white);
+  cursor: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none;
+}
+
+
+/* ----------------------------------------
+   CUSTOM CURSOR
+   ---------------------------------------- */
+#customCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  transition: transform 0.15s ease;
+  will-change: left, top;
+}
+
+
+/* ----------------------------------------
+   INFO BUTTON (fixed top-left)
+   ---------------------------------------- */
+#aboutButton {
+  position: fixed;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  z-index: 1000;
+  color: var(--color-white);
+  mix-blend-mode: difference;
+}
+
+#aboutButton:hover {
+  text-decoration: underline;
+}
+
+
+/* ----------------------------------------
+   ABOUT OVERLAY
+   ---------------------------------------- */
+#aboutOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--color-white);
+  color: var(--color-bg);
+  z-index: 999;
+  overflow-y: auto;
+  scrollbar-width: none;
+  transform: translateX(-100%);
+  transition: transform var(--overlay-transition);
+}
+
+#aboutOverlay::-webkit-scrollbar {
+  display: none;
+}
+
+#aboutOverlay.is-open {
+  transform: translateX(0);
+}
+
+#aboutOverlay * {
+  color: var(--color-bg);
+}
+
+.overlay-inner {
+  padding: var(--spacing-lg);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ----------------------------------------
+   CLOSE BUTTON
+   ---------------------------------------- */
+#closeAbout {
+  position: sticky;
+  top: var(--spacing-md);
+  align-self: flex-end;
+  z-index: 1002;
+  margin-bottom: var(--spacing-lg);
+}
+
+#closeAbout:hover {
+  text-decoration: underline;
+}
+
+
+/* ----------------------------------------
+   OVERLAY CONTENT
+   ---------------------------------------- */
+#contactInfo {
+  font-size: var(--font-size-large);
+  line-height: 1.3;
+  margin-bottom: var(--spacing-lg);
+}
+
+#copyrightInfo {
+  font-size: var(--font-size-body);
+  margin-bottom: var(--spacing-xl);
+}
+
+#menuLinks {
+  font-size: var(--font-size-large);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#menuLinks button:hover {
+  text-decoration: underline;
+}
+
+/* Smooth expand / collapse for Info and CV panels */
+#aboutContent,
+#cvContent {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  overflow: hidden;
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+#aboutContent.is-open,
+#cvContent.is-open {
+  grid-template-rows: 1fr;
+  margin-top: var(--spacing-sm);
+}
+
+/* Inner wrapper required for grid-row height trick */
+#aboutContent .panel-inner,
+#cvContent .panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+#aboutContent p,
+#cvContent p {
+  margin-bottom: var(--spacing-sm);
+}
+
+#aboutImage {
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+#aboutImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.contact-link:hover,
+.inline-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ----------------------------------------
+   DUAL-COLUMN LAYOUT
+   ---------------------------------------- */
+.columns {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.column {
+  flex: 1 1 50%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ----------------------------------------
+   PROJECTS
+   ---------------------------------------- */
+.project {
+  position: relative;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.project .description {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: var(--spacing-md);
+  max-width: 70%;
+  color: var(--color-white);
+  mix-blend-mode: difference;
+  line-height: 1.35;
+}
+
+/* Dot indicators */
+.project .dot-track {
+  position: absolute;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.project .dot-track .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-white);
+  mix-blend-mode: difference;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.project .dot-track .dot.active {
+  opacity: 1;
+}
+
+
+/* ----------------------------------------
+   MOBILE
+   ---------------------------------------- */
+@media (max-width: 768px) {
+
+  html, body {
+    cursor: auto;
+    overflow: hidden;
+  }
+
+  button, a {
+    cursor: auto;
+  }
+
+  #customCursor {
+    display: none;
+  }
+
+  .columns {
+    flex-direction: column;
+    height: 100svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .column {
+    flex: none;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .project {
+    height: 100svh;
+    width: 100%;
+  }
+
+  .project .description {
+    max-width: 85%;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  #aboutOverlay {
+    width: 100%;
+  }
+
+  .overlay-inner {
+    padding: var(--spacing-md);
+  }
+
+  #contactInfo,
+  #menuLinks {
+    font-size: 24px;
+  }
+}
