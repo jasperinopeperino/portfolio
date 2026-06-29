@@ -375,15 +375,11 @@ a {
     font-size: 24px;
   }
 
-  @font-face {
-  font-family: 'SpaceasScript';
-  src: url('SpaceasScript-Rounded.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+  #announcement {
+    font-size: 40px;
+  }
 
-} /* dit sluit de @media (max-width: 768px) block */
+}
 
 
 /* ----------------------------------------
