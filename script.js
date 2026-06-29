@@ -248,7 +248,7 @@ const isMobile = () => window.innerWidth <= 768;
   }
   animate();
 
-  const HOVER = '#aboutButton, #closeAbout, #aboutLink, #cvLink, a, button';
+  const HOVER = '#aboutButton, #closeAbout, #aboutLink, #cvLink, #announcement, a, button';
 
   document.addEventListener('mouseover', e => {
     if (e.target.closest(HOVER)) cursor.style.setProperty('--scale', '1.8');
