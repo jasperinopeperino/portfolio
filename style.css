@@ -402,7 +402,7 @@ a {
    SPACE AS SCRIPT DOWNLOAD
    ---------------------------------------- */
 
-@font-face {
+/* @font-face {
   font-family: 'SpaceasScript';
   src: url('SpaceasScript-Rounded.otf') format('opentype');
   font-weight: normal;
@@ -446,4 +446,4 @@ a {
 
 #announcement a:hover {
   text-decoration: underline;
-}
+} */
