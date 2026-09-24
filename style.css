@@ -218,9 +218,52 @@ a {
   min-height: 0;
 }
 
-#aboutContent p,
-#cvContent p {
-  margin-bottom: var(--spacing-sm);
+/* ----------------------------------------
+   CV
+   ---------------------------------------- */
+
+#cvContent {
+  font-size: var(--font-size-body);
+  line-height: 1.3;
+}
+
+#cvContent .panel-inner {
+  overflow: hidden;
+}
+
+.cv-section {
+  display: grid;
+  grid-template-columns: 22% 78%;
+  margin-bottom: var(--spacing-lg);
+}
+
+.cv-section-title {
+  grid-column: 1;
+}
+
+.cv-items {
+  grid-column: 2;
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 24% 76%;
+}
+
+.cv-year {
+  grid-column: 1;
+}
+
+.cv-description {
+  grid-column: 2;
+}
+
+.cv-section-single {
+  grid-template-columns: 22% 78%;
+}
+
+.cv-section-single .cv-description {
+  grid-column: 2;
 }
 
 #aboutImage {
@@ -393,6 +436,15 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+    .cv-section {
+    grid-template-columns: 25% 75%;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cv-item {
+    grid-template-columns: 30% 70%;
   }
 
 }
